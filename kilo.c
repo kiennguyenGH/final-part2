@@ -83,7 +83,7 @@ int editorReadKey()
                 case 'A': return ARROW_UP;
                 case 'B': return ARROW_DOWN;
                 case 'C': return ARROW_RIGHT;
-                case 'D': return ARROW_DOWN;
+                case 'D': return ARROW_LEFT;
             }
         }
         return '\x1b';
@@ -214,16 +214,28 @@ void editorMoveCursor(int key)
     switch (key)
     {
         case ARROW_LEFT:
-            E.cx--;
+            if (E.cx != 0)
+            {
+                E.cx--;
+            }
             break;
         case ARROW_RIGHT:
-            E.cx++;
+            if (E.cx != E.screencols - 1)
+            {
+                E.cx++;
+            }
             break;
         case ARROW_UP:
-            E.cy--;
+            if (E.cy != 0)
+            {
+                E.cy--;
+            }
             break;
         case ARROW_DOWN:
-            E.cy++;
+            if (E.cy != E.screenrows -1)
+            {
+                E.cy++;
+            }
             break;
     }
 }
