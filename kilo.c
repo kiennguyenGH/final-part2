@@ -28,7 +28,7 @@ enum editorKey
     HOME_KEY,
     END_KEY,
     PAGE_UP,
-    PAGE_DOWN,
+    PAGE_DOWN
 };
 /*** data ***/
 
@@ -262,7 +262,6 @@ void editorOpen(char *filename)
     char *line = NULL;
     size_t linecap = 0;
     ssize_t linelen;
-    linelen = getline(&line, &linecap, fp);
     while ((linelen = getline(&line, &linecap, fp)) != -1)
     {
         while(linelen > 0 && (line[linelen - 1] == '\n' || line[linelen - 1] == '\r'))
@@ -306,6 +305,11 @@ void editorScroll()
     if (E.cy < E.numrows)
     {
         E.rx = editorRowCxToRx(&E.row[E.cy], E.cx);
+    }
+
+    if (E.cy < E.rowoff)
+    {
+        E.rowoff = E.cy;
     }
     if (E.cy >= E.rowoff + E.screenrows)
     {
