@@ -705,7 +705,7 @@ void editorProcessKeypress() {
             break;
 
         case CTRL_KEY('f'):
-            editorfind();
+            editorFind();
             break;
 
         case BACKSPACE:
