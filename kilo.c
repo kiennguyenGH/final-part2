@@ -494,8 +494,9 @@ void editorMoveCursor(int key) {
 }
 
 void editorProcessKeypress() {
-    int c = editorReadKey();
     static int quit_times = KILO_QUIT_TIMES;
+
+    int c = editorReadKey();
 
     switch (c) {
         case '\r':
@@ -507,6 +508,9 @@ void editorProcessKeypress() {
                 quit_times--;
                 return;
             }
+            write(STDOUT_FILENO, "\x1b[2J", 4);
+            write(STDOUT_FILENO, "\x1b[H", 3);
+            exit(0);
             break;
 
         case CTRL_KEY('s'):
