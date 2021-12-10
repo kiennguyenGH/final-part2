@@ -772,7 +772,7 @@ void editorDrawRows(struct abuf *ab) {
                     if (current_color != 1) {
                         char buf[16];
                         int clen = snprintf(buf, sizeof(buf), "\x1b[%dm", current_color);
-                        abAPpend(ab, buf, clen);
+                        abAppend(ab, buf, clen);
                     }
                 } else if (hl[j] == HL_NORMAL) {
                     if (current_color != -1) {
