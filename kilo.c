@@ -331,7 +331,7 @@ void editorDelChar() {
 
 /*** file i/o ***/
 
-void *editorRowsToString(int *buflen) {
+char *editorRowsToString(int *buflen) {
     int totlen = 0;
     int j;
     for (j = 0; j < E.numrows; j++)
@@ -406,7 +406,7 @@ void editorFind() {
     if (query == NULL) return;
 
     int i;
-    for (int i = 0; i < E.numrows; i++) {
+    for (i = 0; i < E.numrows; i++) {
         erow *row = &E.row[i];
         char *match = strstr(row->render, query);
         if (match) {
@@ -663,6 +663,10 @@ void editorProcessKeypress() {
                 E.cx = E.row[E.cy].size;
             break;
 
+        case CTRL_KEY('f'):
+            editorfind();
+            break;
+
         case BACKSPACE:
         case CTRL_KEY('h'):
         case DEL_KEY:
@@ -731,7 +735,7 @@ int main(int argc, char *argv[]) {
         editorOpen(argv[1]);
     }
 
-    editorSetStatusMessage("HELP: Ctrl-S = save | Ctrl-Q = quit");
+    editorSetStatusMessage("HELP: Ctrl-S = save | Ctrl-Q = quit | Ctrl-F = find");
 
     while (1) {
         editorRefreshScreen();
