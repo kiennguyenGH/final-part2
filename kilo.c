@@ -96,8 +96,8 @@ struct editorConfig E;
 
 char *C_HL_extensions[] = { ".c", ".h", ".cpp", NULL};
 char *C_HL_keywords[] = {
-  "switch", "if", "while", "for", "break", "continue", "return", "else",
-  "struct", "union", "typedef", "static", "enum", "class", "case",
+  "switch|", "if|", "while|", "for|", "break|", "continue|", "return|", "else|",
+  "struct|", "union|", "typedef|", "static|", "enum|", "class|", "case|",
   "int|", "long|", "double|", "float|", "char|", "unsigned|", "signed|",
   "void|", NULL
 };
@@ -357,7 +357,7 @@ int editorSyntaxToColor(int hl) {
         case HL_MLCOMMENT: return 36;
         case HL_KEYWORD1: return 33;
         case HL_KEYWORD2: return 32;
-        case HL_STRING: return 35;
+        case HL_STRING: return 31;
         case HL_NUMBER: return 31;
         case HL_MATCH: return 34;
         default: return 37;
