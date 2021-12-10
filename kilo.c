@@ -268,10 +268,10 @@ void editorSelectSyntaxHighlight() {
                 E.syntax = s;
 
                 int filerow;
-                for (filerow = 0; i < E.numrows; filerow++) {
+                for (filerow = 0; filerow < E.numrows; filerow++) {
                     editorUpdateSyntax(&E.row[filerow]);
                 }
-                
+
                 return;
             }
             i++;
