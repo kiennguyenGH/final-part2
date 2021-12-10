@@ -561,7 +561,7 @@ void editorDrawRows(struct abuf *ab) {
             int j;
             for (j = 0; j < len; j++) {
                 if (hl[j] == HL_NORMAL) {
-                    abAppend(ab, "\x1b[31m", 5);
+                    abAppend(ab, "\x1b[39m", 5);
                     abAppend(ab, &c[j], 1);
                 } else {
                     int color = editorSyntaxToColor(hl[j]);
